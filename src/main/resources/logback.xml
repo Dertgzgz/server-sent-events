@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="APP_NAME" value="auth" />
+	<property name="ENVIROMENT" value="LOCAL" />
+	<property name="COMPONENT_NAME" value="sboot-auth" />
+	<property name="LOG_PATTERN"
+		value=" [%d{ISO8601}][%p][${APP_NAME}][%t][${PID}][%logger{10}:%L]%m%n" />
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern> ${LOG_PATTERN} </pattern>
+		</encoder>
+		<file>log/${COMPONENT_NAME}.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>log/${COMPONENT_NAME}.%d.%i.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<maxFileSize>1MB</maxFileSize>
+			<cleanHistoryOnStart>true</cleanHistoryOnStart>
+		</rollingPolicy>
+	</appender>
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="ASYNCFILE"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="FILE" />
+	</appender>
+	<appender name="ASYNCSTDOUT"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="STDOUT" />
+	</appender>
+	<logger name="com.versia" level="DEBUG" additivity="false">
+		<appender-ref ref="ASYNCFILE" />
+		<appender-ref ref="ASYNCSTDOUT" />
+	</logger>
+	<logger name="org.springframework.web" level="INFO"
+		additivity="false">
+		<appender-ref ref="ASYNCFILE" />
+		<appender-ref ref="ASYNCSTDOUT" />
+	</logger>
+	<logger name="org.hibernate.SQL" level="ERROR"
+		additivity="false">
+		<appender-ref ref="ASYNCFILE" />
+		<appender-ref ref="ASYNCSTDOUT" />
+	</logger>
+	<root level="INFO">
+		<appender-ref ref="ASYNCFILE" />
+		<appender-ref ref="ASYNCSTDOUT" />
+	</root>
+</configuration>
+	
