@@ -7,14 +7,18 @@
 		<version>2.6.2</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.versia</groupId>
 	<artifactId>server-sent-events</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>server-sent-events</name>
 	<description>Demo project for Spring Boot</description>
+
 	<properties>
 		<java.version>11</java.version>
+		<openapi.version>1.6.4</openapi.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -38,13 +42,13 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.3</version>
+			<artifactId>springdoc-openapi-webflux-core</artifactId>
+			<version>${openapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-webflux-ui</artifactId>
-			<version>1.6.3</version>
+			<version>${openapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -11,6 +11,8 @@ import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
+
+
 @Configuration
 @OpenAPIDefinition(info = @Info(title = "Auth Example API",
                                 description = "SSE endpoint:"
@@ -26,11 +28,11 @@ import io.swagger.v3.oas.annotations.info.Info;
 )
 public class OpenApiConfig {
     
-    @Bean
-    public OpenApiCustomiser sortTagsAlphabetically() {
-        return openApi -> openApi.setTags(openApi.getTags()
-                .stream()
-                .sorted(Comparator.comparing(tag -> tag.getName()))
-                .collect(Collectors.toList()));
-    }
+//    @Bean
+//    public OpenApiCustomiser sortTagsAlphabetically() {
+//        return openApi -> openApi.setTags(openApi.getTags()
+//                .stream()
+//                .sorted(Comparator.comparing(tag -> tag.getName()))
+//                .collect(Collectors.toList()));
+//    }
 }
