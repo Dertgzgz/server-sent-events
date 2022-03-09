@@ -1,10 +1,5 @@
-package com.versia.sse;
+package com.versia.sse.configuration;
 
-import java.util.Comparator;
-import java.util.stream.Collectors;
-
-import org.springdoc.core.customizers.OpenApiCustomiser;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;

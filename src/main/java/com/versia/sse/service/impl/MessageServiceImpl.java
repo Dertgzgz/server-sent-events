@@ -1,7 +1,6 @@
 package com.versia.sse.service.impl;
 
 import java.time.Duration;
-import java.time.Instant;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ public class MessageServiceImpl implements MessageService {
 
   public Flux<Event> stream() {
     return Flux.interval(Duration.ofSeconds(1))
-      .map(it -> new Event("Bloqueo", eventGenerator.generate(), Instant.now()));
+      .map(it -> new Event(eventGenerator.generate()));
   }
 
 }
